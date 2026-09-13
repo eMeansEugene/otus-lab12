@@ -1,10 +1,14 @@
 cmake_minimum_required(VERSION 3.14)
-project(map_reduce LANGUAGES CXX)
+set(PATCH_VERSION "1" CACHE INTERNAL "Patch version")
+set(PROJECT_VERSION 0.0.${PATCH_VERSION})
+project(map_reduce VERSION ${PROJECT_VERSION} LANGUAGES CXX)
 
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+
+
 
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
@@ -55,3 +59,13 @@ foreach(test_name test_csv_price test_price_accumulator)
     gtest_discover_tests(${test_name})
 endforeach()
 
+
+install(TARGETS mapper_mean mapper_var reducer_mean reducer_var
+        RUNTIME DESTINATION bin)
+
+set(CPACK_GENERATOR DEB)
+set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
+set(CPACK_PACKAGE_VERSION_MINOR "${PROJECT_VERSION_MINOR}")
+set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
+set(CPACK_PACKAGE_CONTACT evgeniy.retc@gmail.com)
+include(CPack)
