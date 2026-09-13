@@ -4,8 +4,6 @@
 
 #ifndef MAP_REDUCE_REDUCER_CORE_H
 #define MAP_REDUCE_REDUCER_CORE_H
-#ifndef MAPREDUCE_REDUCER_CORE_H
-#define MAPREDUCE_REDUCER_CORE_H
 
 #include "price_accumulator.h"
 
@@ -43,7 +41,6 @@ namespace mapreduce {
 
 } // namespace mapreduce
 
-#endif // MAPREDUCE_REDUCER_CORE_H
 
 
 #endif //MAP_REDUCE_REDUCER_CORE_H
